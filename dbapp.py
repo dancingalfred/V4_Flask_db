@@ -12,20 +12,6 @@ def get_db_connection():
     return conn
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 simple = [
   ['arne', '013-131313'], ['berith','01234'], ['caesar','077-1212321']
 ]
@@ -50,11 +36,11 @@ def insert_contact(name, phone_nr, address="Hejgatan", city="Stockholm", email="
     cur.close()
     conn.close()
 
+
 def delete_contact(name):
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute(f"DELETE FROM phonelist WHERE name = {name};")
-
+    cur.execute("DELETE FROM phonelist WHERE name = %s;", (name,))
     conn.commit()
     cur.close()
     conn.close()

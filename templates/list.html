@@ -13,6 +13,15 @@
        {% endfor %}
     </ul>
 
+    
+    <form action="/delete">
+      <label for="name">Delete:</label><br>
+      <input type="text" id="name" name="name" value="John">
+      <input type="submit" value="Delete">
+   </form>
+
+
+
 <!-- <form action="/insert"> -->
       <form action="/insert" method="post">
          <label for="name">Insert:</label><br>
