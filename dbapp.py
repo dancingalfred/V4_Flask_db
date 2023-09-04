@@ -38,26 +38,27 @@ def read_phonelist():
     conn.close()
     return rows
 
-def insert_contact(name,phone_nr,address="Hejgatan", city="Stockholm", email="ingen@epost.nu"):
+
+
+def insert_contact(name, phone_nr, address="Hejgatan", city="Stockholm", email="ingen@epost.nu"):
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute(f"INSERT INTO phonelist (name,phone,address,city,email) VALUES ({name},{phone_nr},{address},{city},{email});")
-    cur.execute("COMMIT;")
-    # rows = cur.fetchall()
+    cur.execute(
+        "INSERT INTO phonelist (name, phone, address, city, email) VALUES (%s, %s, %s, %s, %s);",
+        (name, phone_nr, address, city, email))
+    conn.commit()
     cur.close()
     conn.close()
-    #return rows
 
 def delete_contact(name):
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute(f"DELETE FROM phonelist WHERE name = {name};")
-    cur.execute("COMMIT;")
-    # rows = cur.fetchall()
+
+    conn.commit()
     cur.close()
     conn.close()
-    #return rows
-   
+  
 
 app = Flask(__name__)
 
