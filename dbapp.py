@@ -32,6 +32,7 @@ def insert_contact(name, phone_nr, address="Hejgatan", city="Stockholm", email="
     conn.commit()
     cur.close()
     conn.close()
+    return f"Inserted {name} to database"
 
 def delete_contact(name):
     conn = get_db_connection()
@@ -40,6 +41,7 @@ def delete_contact(name):
     conn.commit()
     cur.close()
     conn.close()
+    return f"Deleted {name} from database"
   
 
 app = Flask(__name__)
