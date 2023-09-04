@@ -54,7 +54,7 @@ def start():
         D[1] = '0'+D[1]
     if len(D[2])<2:
         D[2] = '0'+D[2]
-    return render_template('list.html', list=simple, date=D)
+    return render_template('list.html', list=read_phonelist(), date=D)
 
 @app.route("/insert", methods = ['POST', 'GET'])
 def insert_page():
